@@ -1,0 +1,21 @@
+apply plugin: "base"
+
+task compileTs {
+    def tsSrcDir = "$projectDir/src/main/ts"
+    def tsBuildDir = "$buildDir/ts"
+    
+    group = 'build'
+    description = "Compile TypeScript file"
+    
+    inputs.dir tsSrcDir
+    outputs.dir tsBuildDir
+    
+    def tsc = {
+        executable = 'tsc'      
+        standardOutput = System.out;        
+    }
+    
+    doLast {
+        exec tsc 
+    }    
+}
